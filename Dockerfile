@@ -11,12 +11,13 @@ RUN pip install transformers \
     waitress \
     tqdm
 
+CMD ['git', 'clone', 'https://github.com/fpem123/dino.git', '/dino']
+
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 
 EXPOSE 80
-CMD ['git', 'clone', 'https://github.com/fpem123/dino.git']
 
 CMD ['python dino/app.py',  \
      '--output_dir test_out',   \
