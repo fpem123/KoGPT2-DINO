@@ -16,7 +16,7 @@ WORKDIR /app
 COPY . .
 
 EXPOSE 80
-
+CMD ['git', 'clone', 'https://github.com/fpem123/dino.git']
 CMD ['python dino/app.py',
      '--output_dir test_out',
      '--model_name skt/kogpt2-base-v2',
