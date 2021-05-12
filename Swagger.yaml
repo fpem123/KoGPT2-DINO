@@ -1,0 +1,61 @@
+openapi: 3.0.0   # Open api version
+
+info:
+  title: KoGPT2-DINO
+  version: "v0.1"
+  contact:
+    name: AInizer - Lee hoseop
+  description: |
+    This app is generate Korean datasets from Instructions (DINO 🦕).
+    ---
+      How to use:
+      * Enter the sentence that will be the base of generate in text. You can separate multiple sentences with \n.
+
+      And you can use this in demo page. >> [End point](https://main-ko-gpt2-dino-fpem123.endpoint.ainize.ai/)
+
+      Original repository >> [soeque1 / KoGPT2-DINO](https://github.com/soeque1/KoGPT2-DINO)
+
+servers:
+  - url: https://main-ko-gpt2-dino-fpem123.endpoint.ainize.ai/
+
+paths:
+  /gen:
+    post:
+      requestBody:
+        required: true
+        description: |
+          This request will generate Korean datasets from Instructions (DINO 🦕)
+
+          Request body example
+
+              text: GPT-2는 주어진 텍스트의 다음 단어를 잘 예측할 수 있도록 학습된 언어모델입니다.
+
+          curl example
+
+              curl -X POST "https://main-ko-gpt2-dino-fpem123.endpoint.ainize.ai/gen" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "text=GPT-2는 주어진 텍스트의 다음 단어를 잘 예측할 수 있도록 학습된 언어모델입니다."
+
+
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: "The base of DINO."
+      responses:   # Set response
+        '200':
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  number:
+                    type: object
+        '400':
+          description: "Bad Request Error"
+        '429':
+          description: "Too many requests"
+        '500':
+          description: "Server-side Error"
