@@ -31,11 +31,16 @@ References:
 #### Output format
 
     {
-        0: {
+        "0": {
             label: generated text type number,
             text_a: base text string,
             text_b: generated text string
-            }
+            },
+        "1": {
+            label: generated text type number,
+            text_a: base text string,
+            text_b: generated text string
+            },
         ...
     }
 
